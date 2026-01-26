@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sanmay Ganguly | High Energy Physics & Machine Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #c9a227;
+            --accent-dim: rgba(201, 162, 39, 0.15);
+            --text: #2d2d2d;
+            --text-light: #5a5a5a;
+            --bg: #faf9f7;
+            --bg-card: #ffffff;
+            --border: #e8e6e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-container {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            filter: grayscale(15%);
+            transition: filter 0.4s ease;
+        }
+
+        .profile-image:hover {
+            filter: grayscale(0%);
+        }
+
+        .profile-image-container::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: -12px;
+            bottom: -12px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+        }
+
+        .hero-content .title {
+            font-size: 1.15rem;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            font-weight: 400;
+        }
+
+        .hero-content .affiliation {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .hero-intro {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .hero-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .hero-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .research-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .research-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .research-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--border));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-4px);
+        }
+
+        .timeline-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .institution {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .period {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Publications */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .publication-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .publication-item:hover {
+            border-color: var(--accent);
+        }
+
+        .publication-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .publication-item .authors {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.35rem;
+        }
+
+        .publication-item .venue {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .education-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .education-card .institution {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-card .year {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        /* Group Members Section */
+        .group-intro {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        .group-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .group-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .member-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .member-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .member-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-dim);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .member-avatar span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .member-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .member-role {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .member-topic {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .alumni-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .alumni-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .alumni-name {
+            font-weight: 500;
+            color: var(--primary);
+            min-width: 180px;
+        }
+
+        .alumni-degree {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            min-width: 100px;
+        }
+
+        .alumni-current {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-left: auto;
+        }
+
+        @media (max-width: 700px) {
+            .alumni-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.35rem;
+            }
+
+            .alumni-current {
+                margin-left: 0;
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-item span {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+
+            .profile-image-container {
+                margin: 0 auto;
+            }
+
+            .hero-intro {
+                margin: 0 auto;
+            }
+
+            .hero-links {
+                justify-content: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .award-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 220px;
+                height: 260px;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: var(--accent-dim);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="nav-logo">Sanmay Ganguly</a>
+            <ul class="nav-links">
+                <li><a href="#group">Group</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero">
+            <div class="profile-image-container">
+                <img src="https://www.iitk.ac.in/data/media/faculty/sanmay-ganguly.jpg" alt="Dr. Sanmay Ganguly" class="profile-image">
+            </div>
+            <div class="hero-content">
+                <h1>Dr. Sanmay Ganguly</h1>
+                <p class="title">Assistant Professor, Department of Physics</p>
+                <p class="affiliation">Indian Institute of Technology, Kanpur</p>
+                <p class="hero-intro">
+                    I am an experimental high energy physicist working at the frontier of particle physics and machine learning. 
+                    My research focuses on the ATLAS experiment at CERN's Large Hadron Collider, where I develop novel 
+                    machine learning techniques for particle reconstruction, Higgs physics, and searches for new physics 
+                    beyond the Standard Model.
+                </p>
+                <div class="hero-links">
+                    <a href="mailto:sanmay@iitk.ac.in">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        sanmay@iitk.ac.in
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=FacGNwsAAAAJ" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+                        Google Scholar
+                    </a>
+                    <a href="https://inspirehep.net/authors/1071689?ui-citation-summary=true" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+                        Inspire HEP
+                    </a>
+                    <a href="https://github.com/sanmayphy" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://twitter.com/SanmayGanguly" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        @SanmayGanguly
+                    </a>
+                    <a href="https://www.linkedin.com/in/sanmay-ganguly-a574411a/" target="_blank">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Group Members Section -->
+        <section id="group">
+            <h2>Research Group</h2>
+            <p class="group-intro">Our group works at the intersection of experimental high energy physics and machine learning, contributing to the CMS experiment at CERN and developing novel AI techniques for particle physics.</p>
+            
+            <div class="group-category">
+                <h3 class="category-title">Current Members</h3>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>PhD</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Mr. Shubham Kumar</h4>
+                            <p class="member-role">Ph.D. Student</p>
+                            <p class="member-topic">Machine Learning based reconstruction on FPGA for Phase2 CMS</p>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>PhD</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Mr. Saurabh Rai</h4>
+                            <p class="member-role">Ph.D. Student</p>
+                            <p class="member-topic">Geometric Deep Learning for High Energy Physics</p>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>MS</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Mr. Sattwamo Ghosh</h4>
+                            <p class="member-role">M.S. Student</p>
+                            <p class="member-topic">Lund Plane Jet reconstruction in JULIA + Higgs Physics</p>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>UG</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Pahal Patel</h4>
+                            <p class="member-role">BS Student</p>
+                            <p class="member-topic">Explainable AI in HEP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-category">
+                <h3 class="category-title">Alumni</h3>
+                <div class="alumni-list">
+                    <div class="alumni-item">
+                        <span class="alumni-name">Mr. Ganesh Hansda</span>
+                        <span class="alumni-degree">MTech. 2025</span>
+                        <span class="alumni-current">→ PhD at IISC, Bengaluru in Astrophysics group</span>
+                    </div>
+                    <div class="alumni-item">
+                        <span class="alumni-name">Mr. Shubham Kumar</span>
+                        <span class="alumni-degree">M.S. 2025</span>
+                        <span class="alumni-current">→ Ph.D. at IIT-Kanpur, HEP group</span>
+                    </div>
+                    <div class="alumni-item">
+                        <span class="alumni-name">Mr. Ashmit Bathla</span>
+                        <span class="alumni-degree">B.S. 2025</span>
+                        <span class="alumni-current">→ Moving to industry</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research">
+            <h2>Research Interests</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Experimental High Energy Physics</h3>
+                    <p>Working on the CMS experiment at CERN's Large Hadron Collider, focusing on precision measurements and searches for new physics phenomena beyond the Standard Model. Currently serving as the Jet-MET algorithm sub-group convener.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Machine Learning in HEP</h3>
+                    <p>Developing and applying cutting-edge machine learning techniques including Graph Neural Networks, particle flow algorithms, and generative models for particle physics applications.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Higgs Physics</h3>
+                    <p>Studying Higgs boson properties, charm-tagging techniques, charm Yukawa coupling measurements, and constraints on Higgs self-interactions at the LHC.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Quantum Computation</h3>
+                    <p>Exploring applications of quantum computing in high energy physics, including quantum algorithms for simulation and optimization problems in particle physics.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Jet Reconstruction</h3>
+                    <p>Developing advanced jet energy scale measurements, particle flow algorithms, and reconstruction techniques for collider experiments.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Calorimeter Simulation</h3>
+                    <p>Creating configurable calorimeter simulations for AI applications and developing generative models for detector response simulation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Academic Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Assistant Professor</h3>
+                    <p class="institution">Indian Institute of Technology, Kanpur</p>
+                    <p class="period">2023 – Present</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Project Assistant Professor</h3>
+                    <p class="institution">University of Tokyo, Japan</p>
+                    <p class="period">2021 – 2023</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Postdoctoral Researcher</h3>
+                    <p class="institution">Weizmann Institute of Science, Israel</p>
+                    <p class="period">2017 – 2021 · ATLAS Experiment</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Researcher CSD</h3>
+                    <p class="institution">LPC CNRS, Clermont-Ferrand, France</p>
+                    <p class="period">2015 – 2017 · ATLAS Experiment</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Ph.D. in Elementary Particle Physics</h3>
+                    <p class="institution">Tata Institute of Fundamental Research (TIFR), Mumbai</p>
+                    <p class="year">2015 · CMS Experiment</p>
+                </div>
+                <div class="education-card">
+                    <h3>Master's in Physics</h3>
+                    <p class="institution">Tata Institute of Fundamental Research (TIFR), Mumbai</p>
+                    <p class="year">2008 – 2015</p>
+                </div>
+                <div class="education-card">
+                    <h3>Bachelor's Degree</h3>
+                    <p class="institution">Scottish Church College, Kolkata</p>
+                    <p class="year">2008</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications">
+            <h2>Selected Publications</h2>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <h3>Graph Neural Networks in Particle Physics: Implementations, Innovations, and Challenges</h3>
+                    <p class="authors">S. Thais, P. Calafiura, G. Chachamis, G. DeZoort, J.M. Duarte, S. Ganguly, M. Kagan, D. Murnane, M.S. Neubauer, K. Terao</p>
+                    <p class="venue">arXiv:2203.12852 (2022)</p>
+                </div>
+                <div class="publication-item">
+                    <h3>Configurable Calorimeter Simulation for AI Applications</h3>
+                    <p class="authors">A. Charkin-Gorbulin, K. Cranmer, F.A. Di Bello, E. Dreyer, S. Ganguly, E. Gross, L. Heinrich, M. Kado, N. Kakati, P. Rieck, L. Santi, M. Tusoni</p>
+                    <p class="venue">Machine Learning: Science and Technology 4(3) (2023)</p>
+                </div>
+                <div class="publication-item">
+                    <h3>Set-conditional Set Generation for Particle Physics</h3>
+                    <p class="authors">N. Soybelman, N. Kakati, L. Heinrich, F.A. Di Bello, E. Dreyer, S. Ganguly, E. Gross, M. Kado, J. Shlomi</p>
+                    <p class="venue">Machine Learning: Science and Technology 4(4) (2023)</p>
+                </div>
+                <div class="publication-item">
+                    <h3>Symmetry Group Equivariant Architectures for Physics</h3>
+                    <p class="authors">A. Bogatskiy, S. Ganguly, T. Kipf, R. Kondor, D.W. Miller, J.T. Offermann, P.E. Shanahan, S. Thais</p>
+                    <p class="venue">arXiv preprint (2022)</p>
+                </div>
+                <div class="publication-item">
+                    <h3>Particle Flow Reconstruction with Graph Neural Networks</h3>
+                    <p class="authors">ATLAS Collaboration</p>
+                    <p class="venue">Physical Review D (ATLAS Experiment Publications)</p>
+                </div>
+                <div class="publication-item">
+                    <h3>Towards a Computer Vision Particle Flow</h3>
+                    <p class="authors">F. Di Bello, S. Ganguly, E. Gross, M. Kado, M. Pitt, L. Santi, J. Shlomi</p>
+                    <p class="venue">European Journal of Physics, C</p>
+                </div>
+                <div class="publication-item">
+                    <h3>Secondary Vertex Finding in Jets with Neural Networks</h3>
+                    <p class="authors">J. Shlomi, S. Ganguly, E. Gross, K. Cranmer, Y. Lipman, H. Serviansky, H. Maron, N. Segol</p>
+                    <p class="venue">European Journal of Physics, C</p>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; color: var(--text-light); font-size: 0.95rem;">
+                Full publication list available on <a href="https://scholar.google.com/citations?user=FacGNwsAAAAJ" target="_blank" style="color: var(--accent);">Google Scholar</a> 
+                (1,600+ articles, 263,000+ citations as ATLAS collaboration member)
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>
+                            Room No. 111, Block A<br>
+                            Old SAC Building<br>
+                            Department of Physics<br>
+                            IIT Kanpur, Kanpur 208016<br>
+                            Uttar Pradesh, India
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <span><a href="mailto:sanmay@iitk.ac.in">sanmay@iitk.ac.in</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        <span><a href="https://www.iitk.ac.in/sanmay-ganguly" target="_blank">IIT Kanpur Faculty Page</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        <span><a href="https://sites.google.com/view/hepiitk" target="_blank">High Energy Physics Group @ IIT Kanpur</a></span>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <p style="color: var(--text-light); line-height: 1.8;">
+                        I am actively looking for motivated students interested in experimental high energy physics, 
+                        machine learning applications in physics, and quantum computation. If you are interested in 
+                        pursuing research in these areas, please feel free to reach out with your CV and a brief 
+                        statement of research interests.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8; margin-top: 1rem;">
+                        The High Energy Physics group at IIT Kanpur regularly invites applications for postdoctoral 
+                        positions. Check our <a href="https://sites.google.com/view/hepiitk" target="_blank" style="color: var(--accent);">group website</a> for current openings.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Dr. Sanmay Ganguly · Indian Institute of Technology, Kanpur</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/sanmayphy">GitHub</a> · 
+            <a href="https://inspirehep.net/authors/1071689?ui-citation-summary=true">Inspire HEP</a> .
+            <a href="https://scholar.google.com/citations?user=FacGNwsAAAAJ">Google Scholar</a> · 
+            <a href="https://twitter.com/SanmayGanguly">Twitter</a>
+        </p>
+    </footer>
+</body>
+</html>
