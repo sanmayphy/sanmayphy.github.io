@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Sanmay Ganguly | High Energy Physics & Machine Learning</title>
+    <title>Dr. Sanmay Ganguly | High Energy Physics &amp; Machine Learning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
             --primary: #1a1a2e;
             --accent: #c9a227;
             --accent-dim: rgba(201, 162, 39, 0.15);
+            --accent-text: #8a6d10;
             --text: #2d2d2d;
             --text-light: #5a5a5a;
             --bg: #faf9f7;
@@ -76,7 +77,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 1.75rem;
             list-style: none;
         }
 
@@ -238,7 +239,7 @@
         /* Research Areas */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
             gap: 1.5rem;
         }
 
@@ -316,7 +317,7 @@
         }
 
         .timeline-item .institution {
-            color: var(--accent);
+            color: var(--accent-text);
             font-size: 0.95rem;
             font-weight: 500;
             margin-bottom: 0.25rem;
@@ -329,8 +330,8 @@
 
         /* Publications */
         .publications-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.25rem;
         }
 
@@ -339,6 +340,8 @@
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
             transition: all 0.2s ease;
         }
 
@@ -346,7 +349,7 @@
             border-color: var(--accent);
         }
 
-        .publication-item h3 {
+        .publication-item h4 {
             font-size: 1rem;
             font-weight: 500;
             color: var(--primary);
@@ -362,14 +365,14 @@
 
         .publication-item .venue {
             font-size: 0.85rem;
-            color: var(--accent);
+            color: var(--accent-text);
             font-style: italic;
         }
 
         /* Education */
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 1.5rem;
         }
 
@@ -447,7 +450,7 @@
 
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
             gap: 1.25rem;
         }
 
@@ -482,7 +485,7 @@
         .member-avatar span {
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--accent-text);
             letter-spacing: 0.02em;
         }
 
@@ -496,7 +499,7 @@
 
         .member-role {
             font-size: 0.85rem;
-            color: var(--accent);
+            color: var(--accent-text);
             font-weight: 500;
             margin-bottom: 0.3rem;
         }
@@ -518,39 +521,30 @@
             border: 1px solid var(--border);
             border-radius: 6px;
             padding: 1rem 1.25rem;
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(170px, 1fr) minmax(0, 1.5fr) minmax(0, 1.5fr);
             align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            gap: 0.25rem 1.5rem;
         }
 
         .alumni-name {
             font-weight: 500;
             color: var(--primary);
-            min-width: 180px;
         }
 
         .alumni-degree {
             font-size: 0.9rem;
             color: var(--text-light);
-            min-width: 100px;
         }
 
         .alumni-current {
             font-size: 0.9rem;
-            color: var(--accent);
-            margin-left: auto;
+            color: var(--accent-text);
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
             .alumni-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.35rem;
-            }
-
-            .alumni-current {
-                margin-left: 0;
+                grid-template-columns: minmax(0, 1fr);
             }
         }
 
@@ -604,7 +598,204 @@
             text-decoration: none;
         }
 
+        /* Shared subsections */
+        .subsection {
+            margin-bottom: 2.5rem;
+        }
+
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2.5rem 3rem;
+        }
+
+        .section-note {
+            margin-top: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .section-note a {
+            color: var(--accent-text);
+        }
+
+        .ov {
+            text-decoration: overline;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        a:focus-visible,
+        summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Publication details */
+        .publication-item .authors .me {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .pub-note {
+            margin-top: 0.35rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 0.85rem;
+        }
+
+        .pub-links a {
+            padding: 0.15rem 0.65rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--accent-text);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .pub-links a:hover {
+            background: var(--accent-dim);
+            border-color: var(--accent);
+        }
+
+        /* Talks and teaching lists */
+        .entry-list {
+            list-style: none;
+        }
+
+        .entry {
+            display: grid;
+            grid-template-columns: 5.25rem minmax(0, 1fr);
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .entry:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .entry-year {
+            color: var(--accent-text);
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .entry-title {
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.45;
+            text-decoration: none;
+        }
+
+        a.entry-title:hover {
+            color: var(--accent-text);
+            text-decoration: underline;
+        }
+
+        .entry-meta {
+            margin-top: 0.15rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .entry-meta a {
+            color: var(--accent-text);
+        }
+
+        /* Expandable lists */
+        .more {
+            margin-top: 1rem;
+        }
+
+        .more > summary {
+            width: fit-content;
+            padding: 0.4rem 0;
+            color: var(--accent-text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .more[open] > summary {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Leadership cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem 1.75rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            padding: 0.4rem 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .info-card li:first-child {
+            border-top: none;
+        }
+
         /* Responsive */
+        @media (max-width: 960px) {
+            nav {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.2rem 1.25rem;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                padding: 0.3rem 0;
+            }
+        }
+
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -627,25 +818,39 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .publications-list,
+            .two-column,
+            .info-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
         }
 
         @media (max-width: 600px) {
-            .nav-links {
-                display: none;
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2.5rem 1rem 4rem;
+            }
+
+            main {
+                padding: 3rem 1rem 4rem;
             }
 
             .hero-content h1 {
                 font-size: 2.4rem;
             }
 
-            .award-banner {
-                flex-direction: column;
-                text-align: center;
-            }
-
             .profile-image {
                 width: 220px;
                 height: 260px;
+            }
+
+            .entry {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.1rem;
             }
         }
 
@@ -669,7 +874,10 @@
                 <li><a href="#group">Group</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#leadership">Leadership</a></li>
                 <li><a href="#publications">Publications</a></li>
+                <li><a href="#talks">Talks</a></li>
+                <li><a href="#teaching">Teaching</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -683,10 +891,10 @@
                 <p class="title">Assistant Professor, Department of Physics</p>
                 <p class="affiliation">Indian Institute of Technology, Kanpur</p>
                 <p class="hero-intro">
-                    I am an experimental high energy physicist working at the frontier of particle physics and machine learning. 
-                    My research focuses on the CMS experiment at CERN's Large Hadron Collider, where I develop novel 
-                    machine learning techniques for particle reconstruction, Higgs physics, and searches for new physics 
-                    beyond the Standard Model.
+                    I am an experimental high energy physicist working at the frontier of particle physics and machine learning.
+                    My research focuses on the CMS experiment at CERN's Large Hadron Collider, where I work on heavy-flavor
+                    tagging, Higgs physics within and beyond the Standard Model, Jet-MET, and machine learning for particle
+                    reconstruction and simulation. I currently serve as convener of the CMS JetMET algorithm group (2025–2027).
                 </p>
                 <div class="hero-links">
                     <a href="mailto:sanmay@iitk.ac.in">
@@ -723,18 +931,28 @@
         <section id="group">
             <h2>Research Group</h2>
             <p class="group-intro">Our group works at the intersection of experimental high energy physics and machine learning, contributing to the CMS experiment at CERN and developing novel AI techniques for particle physics.</p>
-            
+
             <div class="group-category">
                 <h3 class="category-title">Current Members</h3>
                 <div class="members-grid">
                     <div class="member-card">
                         <div class="member-avatar">
-                            <span>PhD</span>
+                            <span>PD</span>
                         </div>
                         <div class="member-info">
-                            <h4>Mr. Shubham Kumar</h4>
-                            <p class="member-role">Ph.D. Student</p>
-                            <p class="member-topic">Machine Learning based reconstruction on FPGA for Phase2 CMS</p>
+                            <h4>Soumyananda Goswami</h4>
+                            <p class="member-role">Postdoctoral Researcher</p>
+                            <p class="member-topic">Heavy Flavor Tagging Algorithms for CMS Phase-2 and FCC-ee</p>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>PD</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Rameswar Sahu</h4>
+                            <p class="member-role">Postdoctoral Researcher</p>
+                            <p class="member-topic">Developing Machine Learning based global event reconstruction on FPGA for Phase-2 CMS</p>
                         </div>
                     </div>
                     <div class="member-card">
@@ -742,29 +960,49 @@
                             <span>PhD</span>
                         </div>
                         <div class="member-info">
-                            <h4>Mr. Saurabh Rai</h4>
+                            <h4>Shubham Kumar</h4>
+                            <p class="member-role">Ph.D. Student</p>
+                            <p class="member-topic">Machine Learning based reconstruction on FPGA for Phase-2 CMS</p>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>PhD</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Saurabh Rai</h4>
                             <p class="member-role">Ph.D. Student</p>
                             <p class="member-topic">Geometric Deep Learning for High Energy Physics</p>
                         </div>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">
-                            <span>MS</span>
+                            <span>PhD</span>
                         </div>
                         <div class="member-info">
-                            <h4>Mr. Sattwamo Ghosh</h4>
-                            <p class="member-role">M.S. Student</p>
-                            <p class="member-topic">Lund Plane Jet reconstruction in JULIA + Higgs Physics</p>
+                            <h4>Sattwamo Ghosh</h4>
+                            <p class="member-role">Ph.D. Student</p>
+                            <p class="member-topic">Lund Plane Jet reconstruction in Julia + Higgs Physics</p>
                         </div>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">
-                            <span>UG</span>
+                            <span>PhD</span>
                         </div>
                         <div class="member-info">
-                            <h4>Pahal Patel</h4>
-                            <p class="member-role">BS Student</p>
-                            <p class="member-topic">Explainable AI in HEP</p>
+                            <h4>Abhinav Kumar</h4>
+                            <p class="member-role">Ph.D. Student</p>
+                            <p class="member-topic">Exploring SUEP and Semi-Visible Jets through Generative Models</p>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <span>MSc</span>
+                        </div>
+                        <div class="member-info">
+                            <h4>Tuhin Bakuli</h4>
+                            <p class="member-role">M.Sc. Student</p>
+                            <p class="member-topic">Probe of Effective Field Theory using Geometric Deep Learning</p>
                         </div>
                     </div>
                 </div>
@@ -774,21 +1012,74 @@
                 <h3 class="category-title">Alumni</h3>
                 <div class="alumni-list">
                     <div class="alumni-item">
-                        <span class="alumni-name">Mr. Ganesh Hansda</span>
-                        <span class="alumni-degree">MTech. 2025</span>
-                        <span class="alumni-current">→ PhD at IISC, Bengaluru in Astrophysics group</span>
+                        <span class="alumni-name">Pahal Patel</span>
+                        <span class="alumni-degree">B.S. thesis, IIT Kanpur</span>
+                        <span class="alumni-current">→ M.S. at Columbia University</span>
                     </div>
                     <div class="alumni-item">
-                        <span class="alumni-name">Mr. Shubham Kumar</span>
+                        <span class="alumni-name">Anuranjan Sarkar</span>
+                        <span class="alumni-degree">M.Sc. thesis, 2025</span>
+                        <span class="alumni-current">→ Ph.D. at DESY (ATLAS)</span>
+                    </div>
+                    <div class="alumni-item">
+                        <span class="alumni-name">Sattwamo Ghosh</span>
+                        <span class="alumni-degree">M.Sc. thesis, 2025</span>
+                        <span class="alumni-current">→ Ph.D. in this group</span>
+                    </div>
+                    <div class="alumni-item">
+                        <span class="alumni-name">Ganesh Hansda</span>
+                        <span class="alumni-degree">M.Tech. 2025</span>
+                        <span class="alumni-current">→ Ph.D. at IISc Bengaluru, Astrophysics group</span>
+                    </div>
+                    <div class="alumni-item">
+                        <span class="alumni-name">Shubham Kumar</span>
                         <span class="alumni-degree">M.S. 2025</span>
-                        <span class="alumni-current">→ Ph.D. at IIT-Kanpur, HEP group</span>
+                        <span class="alumni-current">→ Ph.D. in this group</span>
                     </div>
                     <div class="alumni-item">
-                        <span class="alumni-name">Mr. Ashmit Bathla</span>
+                        <span class="alumni-name">Ashmit Bathla</span>
                         <span class="alumni-degree">B.S. 2025</span>
-                        <span class="alumni-current">→ Moving to industry</span>
+                        <span class="alumni-current">→ Industry</span>
+                    </div>
+                    <div class="alumni-item">
+                        <span class="alumni-name">Rishima Harikumar</span>
+                        <span class="alumni-degree">B.S. thesis, IIT Kanpur</span>
                     </div>
                 </div>
+                <details class="more">
+                    <summary>Earlier students and postdocs, before IIT Kanpur (6)</summary>
+                    <div class="alumni-list">
+                        <div class="alumni-item">
+                            <span class="alumni-name">Jian Wu</span>
+                            <span class="alumni-degree">M.Sc. 2023, University of Tokyo (co-supervisor)</span>
+                            <span class="alumni-current">→ Ph.D. at ICEPP, University of Tokyo</span>
+                        </div>
+                        <div class="alumni-item">
+                            <span class="alumni-name">Wai Yuen Chan</span>
+                            <span class="alumni-degree">Postdoc, ICEPP, University of Tokyo</span>
+                            <span class="alumni-current">→ Postdoc on the EIC project, China</span>
+                        </div>
+                        <div class="alumni-item">
+                            <span class="alumni-name">Anton Charkin-Gorbulin</span>
+                            <span class="alumni-degree">M.Sc. 2021, Weizmann Institute (co-supervisor)</span>
+                            <span class="alumni-current">→ Ph.D. in Luxembourg (chemical physics and ML)</span>
+                        </div>
+                        <div class="alumni-item">
+                            <span class="alumni-name">Mahran Shehadeh</span>
+                            <span class="alumni-degree">M.Sc. 2019, Weizmann Institute</span>
+                            <span class="alumni-current">→ Ph.D. at Weizmann Institute (Complex Systems)</span>
+                        </div>
+                        <div class="alumni-item">
+                            <span class="alumni-name">William Barbe</span>
+                            <span class="alumni-degree">Ph.D. 2019, LPC Clermont-Ferrand</span>
+                            <span class="alumni-current">→ Industry</span>
+                        </div>
+                        <div class="alumni-item">
+                            <span class="alumni-name">Aman Bajaj</span>
+                            <span class="alumni-degree">Summer project, 2013 (M.Sc. student, IIT Bombay)</span>
+                        </div>
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -797,28 +1088,40 @@
             <h2>Research Interests</h2>
             <div class="research-grid">
                 <div class="research-card">
-                    <h3>Experimental High Energy Physics</h3>
-                    <p>Working on the CMS experiment at CERN's Large Hadron Collider, focusing on precision measurements and searches for new physics phenomena beyond the Standard Model. Currently serving as the Jet-MET algorithm sub-group convener.</p>
+                    <h3>CMS Experiment &amp; Jet-MET</h3>
+                    <p>Experimental research with the CMS detector at CERN's Large Hadron Collider. I convene the CMS JetMET algorithm group (2025–2027).</p>
                 </div>
                 <div class="research-card">
-                    <h3>Machine Learning in HEP</h3>
-                    <p>Developing and applying cutting-edge machine learning techniques including Graph Neural Networks, particle flow algorithms, and generative models for particle physics applications.</p>
+                    <h3>Machine Learning for Reconstruction</h3>
+                    <p>Graph neural networks, set transformers and hypergraph models for particle flow, vertexing and event reconstruction.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Heavy-Flavor Tagging</h3>
+                    <p>Deep-learning jet flavor tagging at the LHC, including the DL1r and GN2 taggers developed in ATLAS.</p>
                 </div>
                 <div class="research-card">
                     <h3>Higgs Physics</h3>
-                    <p>Studying Higgs boson properties, charm-tagging techniques, charm Yukawa coupling measurements, and constraints on Higgs self-interactions at the LHC.</p>
+                    <p>The Higgs coupling to charm quarks, di-Higgs and tri-Higgs production, Higgs self-interaction, and searches for additional Higgs bosons.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Jet Physics &amp; QCD</h3>
+                    <p>Jet cross sections, the jet energy scale, the running of the strong coupling, jet substructure and the Lund jet plane.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Generative AI &amp; Fast Simulation</h3>
+                    <p>Generative models for detector response, including the CMS High-Granularity Calorimeter, and configurable calorimeter simulation for AI.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Explainable &amp; Interpretable AI</h3>
+                    <p>Understanding what jet taggers learn, using explainability methods, mechanistic interpretability and model stitching.</p>
                 </div>
                 <div class="research-card">
                     <h3>Quantum Computation</h3>
-                    <p>Exploring applications of quantum computing in high energy physics, including quantum algorithms for simulation and optimization problems in particle physics.</p>
+                    <p>Quantum machine learning and quantum-annealing methods for particle tracking at the LHC.</p>
                 </div>
                 <div class="research-card">
-                    <h3>Jet Reconstruction</h3>
-                    <p>Developing advanced jet energy scale measurements, particle flow algorithms, and reconstruction techniques for collider experiments.</p>
-                </div>
-                <div class="research-card">
-                    <h3>Calorimeter Simulation</h3>
-                    <p>Creating configurable calorimeter simulations for AI applications and developing generative models for detector response simulation.</p>
+                    <h3>Real-Time &amp; Fast Computing</h3>
+                    <p>Machine-learning reconstruction on FPGAs for the CMS Phase-2 upgrade and fast jet finding in Julia.</p>
                 </div>
             </div>
         </section>
@@ -829,23 +1132,23 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <h3>Assistant Professor</h3>
-                    <p class="institution">Indian Institute of Technology, Kanpur</p>
-                    <p class="period">2023 – Present</p>
+                    <p class="institution">Department of Physics, Indian Institute of Technology, Kanpur</p>
+                    <p class="period">November 2023 – Present · CMS Experiment</p>
                 </div>
                 <div class="timeline-item">
                     <h3>Project Assistant Professor</h3>
-                    <p class="institution">University of Tokyo, Japan</p>
-                    <p class="period">2021 – 2023</p>
+                    <p class="institution">ICEPP, University of Tokyo, Japan</p>
+                    <p class="period">July 2021 – November 2023 · ATLAS Experiment</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Postdoctoral Researcher</h3>
+                    <h3>Postdoctoral Fellow</h3>
                     <p class="institution">Weizmann Institute of Science, Israel</p>
-                    <p class="period">2017 – 2021 · ATLAS Experiment</p>
+                    <p class="period">September 2017 – June 2021 · ATLAS Experiment</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Researcher CSD</h3>
+                    <h3>Postdoctoral Fellow</h3>
                     <p class="institution">LPC CNRS, Clermont-Ferrand, France</p>
-                    <p class="period">2015 – 2017 · ATLAS Experiment</p>
+                    <p class="period">April 2015 – July 2017 · ATLAS Experiment</p>
                 </div>
             </div>
         </section>
@@ -857,17 +1160,58 @@
                 <div class="education-card">
                     <h3>Ph.D. in Elementary Particle Physics</h3>
                     <p class="institution">Tata Institute of Fundamental Research (TIFR), Mumbai</p>
-                    <p class="year">2015 · CMS Experiment</p>
+                    <p class="year">May 2011 – February 2015 · CMS Experiment</p>
                 </div>
                 <div class="education-card">
                     <h3>Master's in Physics</h3>
                     <p class="institution">Tata Institute of Fundamental Research (TIFR), Mumbai</p>
-                    <p class="year">2008 – 2015</p>
+                    <p class="year">August 2008 – April 2011 · Thesis: Jet property studies in CMS</p>
                 </div>
                 <div class="education-card">
-                    <h3>Bachelor's Degree</h3>
-                    <p class="institution">Scottish Church College, Kolkata</p>
+                    <h3>B.Sc.</h3>
+                    <p class="institution">Scottish Church College, University of Calcutta</p>
                     <p class="year">2008</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership, Grants and Service Section -->
+        <section id="leadership">
+            <h2>Leadership, Grants &amp; Service</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Leadership</h3>
+                    <ul>
+                        <li>Convener, CMS JetMET Algorithm Group <span class="nowrap">(2025–2027)</span></li>
+                        <li>Working Group Convener, DAE-HEP Symposium 2026 (WG 10: Software &amp; Computing in HEP)</li>
+                        <li>Co-convener, ATLAS Flavor Tagging Software Group</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Research Grants</h3>
+                    <ul>
+                        <li>ANRF Maha AI Grant (2026, three years)</li>
+                        <li>ANRF Advanced Research Grant (2025, five years)</li>
+                        <li>IIT Kanpur Faculty Initiation Grant</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Fellowships</h3>
+                    <ul>
+                        <li>Faculty Postdoctoral Excellence Fellowship, Weizmann Institute <span class="nowrap">(2019–2020)</span></li>
+                        <li>Pacific Theatres Foundation Postdoctoral Fellow, Weizmann Institute <span class="nowrap">(2018–2019)</span></li>
+                        <li>Dean of Science Fellow, Weizmann Institute <span class="nowrap">(2017–2018)</span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Service to the Community</h3>
+                    <ul>
+                        <li>Referee: SciPost Physics, European Physical Journal C, JINST, NeurIPS ML4PS</li>
+                        <li>Member, CMS Analysis Review Committee</li>
+                        <li>Internal reviewer, ATLAS institute review</li>
+                        <li>National Advisory Committee: ML4HEP schools (2024, 2025, 2026) and <span class="nowrap">CMS-DAS</span>, IIT Hyderabad (2025)</li>
+                        <li>Organizer, ML at HEP Workshop, KEK (2023)</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -875,47 +1219,535 @@
         <!-- Publications Section -->
         <section id="publications">
             <h2>Selected Publications</h2>
-            <div class="publications-list">
-                <div class="publication-item">
-                    <h3>Graph Neural Networks in Particle Physics: Implementations, Innovations, and Challenges</h3>
-                    <p class="authors">S. Thais, P. Calafiura, G. Chachamis, G. DeZoort, J.M. Duarte, S. Ganguly, M. Kagan, D. Murnane, M.S. Neubauer, K. Terao</p>
-                    <p class="venue">arXiv:2203.12852 (2022)</p>
-                </div>
-                <div class="publication-item">
-                    <h3>Configurable Calorimeter Simulation for AI Applications</h3>
-                    <p class="authors">A. Charkin-Gorbulin, K. Cranmer, F.A. Di Bello, E. Dreyer, S. Ganguly, E. Gross, L. Heinrich, M. Kado, N. Kakati, P. Rieck, L. Santi, M. Tusoni</p>
-                    <p class="venue">Machine Learning: Science and Technology 4(3) (2023)</p>
-                </div>
-                <div class="publication-item">
-                    <h3>Set-conditional Set Generation for Particle Physics</h3>
-                    <p class="authors">N. Soybelman, N. Kakati, L. Heinrich, F.A. Di Bello, E. Dreyer, S. Ganguly, E. Gross, M. Kado, J. Shlomi</p>
-                    <p class="venue">Machine Learning: Science and Technology 4(4) (2023)</p>
-                </div>
-                <div class="publication-item">
-                    <h3>Symmetry Group Equivariant Architectures for Physics</h3>
-                    <p class="authors">A. Bogatskiy, S. Ganguly, T. Kipf, R. Kondor, D.W. Miller, J.T. Offermann, P.E. Shanahan, S. Thais</p>
-                    <p class="venue">arXiv preprint (2022)</p>
-                </div>
-                <div class="publication-item">
-                    <h3>Particle Flow Reconstruction with Graph Neural Networks</h3>
-                    <p class="authors">ATLAS Collaboration</p>
-                    <p class="venue">Physical Review D (ATLAS Experiment Publications)</p>
-                </div>
-                <div class="publication-item">
-                    <h3>Towards a Computer Vision Particle Flow</h3>
-                    <p class="authors">F. Di Bello, S. Ganguly, E. Gross, M. Kado, M. Pitt, L. Santi, J. Shlomi</p>
-                    <p class="venue">European Journal of Physics, C</p>
-                </div>
-                <div class="publication-item">
-                    <h3>Secondary Vertex Finding in Jets with Neural Networks</h3>
-                    <p class="authors">J. Shlomi, S. Ganguly, E. Gross, K. Cranmer, Y. Lipman, H. Serviansky, H. Maron, N. Segol</p>
-                    <p class="venue">European Journal of Physics, C</p>
+            <div class="subsection">
+                <h3 class="category-title">Recent Work (2026)</h3>
+                <div class="publications-list">
+                    <article class="publication-item">
+                        <h4>Transforming jet flavour tagging at ATLAS</h4>
+                        <p class="authors">ATLAS Collaboration</p>
+                        <p class="venue">Nature Communications 17, 541 (2026)</p>
+                        <p class="pub-note">Main analyzer: GN2 implementation and student guidance</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1038/s41467-025-65059-6" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2505.19689" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>What the Primary Lund Plane Omits: A Model-Stitching Diagnosis of a Jet-Tagger Representation Gap</h4>
+                        <p class="authors">S. Rai, <span class="me">S. Ganguly</span></p>
+                        <p class="venue">arXiv:2610.37137 (2026)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2610.37137" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Modeling the CMS High-Granularity Calorimeter with Generative AI</h4>
+                        <p class="authors">CMS Collaboration</p>
+                        <p class="venue">CMS-DP-2026-049 (2026)</p>
+                        <p class="pub-links"><a href="https://cds.cern.ch/record/2962239" target="_blank" rel="noopener">CDS</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Probing SMEFT Operators through t<span class="ov">t</span>t<span class="ov">t</span> Production with Hyper-Graph Neural Networks at the LHC</h4>
+                        <p class="authors">A. Subba, <span class="me">S. Ganguly</span></p>
+                        <p class="venue">arXiv:2605.18382 (2026)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2605.18382" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Dissecting Jet-Tagger Through Mechanistic Interpretability</h4>
+                        <p class="authors">S. Rai, <span class="me">S. Ganguly</span></p>
+                        <p class="venue">arXiv:2605.09881 (2026)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2605.09881" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>BRICKS: Compositional Neural Markov Kernels for Zero-Shot Radiation-Matter Simulation</h4>
+                        <p class="authors">R. Hildebrandt, E. Kourlitis, B. Hashemi, M. Bünstorf, T. Meyer, N. Boskov, M. Kagan, D. Rosenbaum, <span class="me">S. Ganguly</span>, L. Heinrich</p>
+                        <p class="venue">arXiv:2605.06591 (2026)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2605.06591" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Explainable AI for Jet Tagging: A Comparative Study of GNNExplainer, GNNShap, and GradCAM for Jet Tagging in the Lund Jet Plane</h4>
+                        <p class="authors">P.D. Patel, <span class="me">S. Ganguly</span></p>
+                        <p class="venue">arXiv:2604.25885 (2026)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2604.25885" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
                 </div>
             </div>
-            <p style="margin-top: 1.5rem; color: var(--text-light); font-size: 0.95rem;">
-                Full publication list available on <a href="https://scholar.google.com/citations?user=FacGNwsAAAAJ" target="_blank" style="color: var(--accent);">Google Scholar</a> 
-                (1,600+ articles, 263,000+ citations as ATLAS collaboration member)
+            <div class="subsection">
+                <h3 class="category-title">Selected Earlier Work</h3>
+                <div class="publications-list">
+                    <article class="publication-item">
+                        <h4>Search for pair production of boosted Higgs bosons via vector-boson fusion in the b<span class="ov">b</span>b<span class="ov">b</span> final state using pp collisions at √s&nbsp;=&nbsp;13&nbsp;TeV with the ATLAS detector</h4>
+                        <p class="authors">ATLAS Collaboration</p>
+                        <p class="venue">Physics Letters B 858, 139007 (2024)</p>
+                        <p class="pub-note">Main analyzer: parton shower uncertainties and sample production</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1016/j.physletb.2024.139007" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2404.17193" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>ATLAS flavour-tagging algorithms for the LHC Run 2 pp collision dataset</h4>
+                        <p class="authors">ATLAS Collaboration</p>
+                        <p class="venue">Eur. Phys. J. C 83, 681 (2023)</p>
+                        <p class="pub-note">Main analyzer: DL1r training</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1140/epjc/s10052-023-11699-1" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2211.16345" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Reconstructing particles in jets using set transformer and hypergraph prediction networks</h4>
+                        <p class="authors">F.A. Di Bello, E. Dreyer, <span class="me">S. Ganguly</span>, E. Gross, L. Heinrich, A. Ivina, M. Kado, N. Kakati, L. Santi, J. Shlomi, M. Tusoni</p>
+                        <p class="venue">Eur. Phys. J. C 83, 596 (2023)</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1140/epjc/s10052-023-11677-7" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2212.01328" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Set-conditional set generation for particle physics</h4>
+                        <p class="authors">N. Soybelman, N. Kakati, L. Heinrich, F.A. Di Bello, E. Dreyer, <span class="me">S. Ganguly</span>, E. Gross, M. Kado, J. Shlomi</p>
+                        <p class="venue">Mach. Learn.: Sci. Technol. 4, 045036 (2023)</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1088/2632-2153/ad035b" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2211.06406" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Configurable calorimeter simulation for AI applications</h4>
+                        <p class="authors">A. Charkin-Gorbulin, K. Cranmer, F.A. Di Bello, E. Dreyer, <span class="me">S. Ganguly</span>, E. Gross, L. Heinrich, M. Kado, N. Kakati, P. Rieck, L. Santi, M. Tusoni</p>
+                        <p class="venue">Mach. Learn.: Sci. Technol. 4, 035042 (2023)</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1088/2632-2153/acf186" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2303.02101" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Direct constraint on the Higgs-charm coupling from a search for Higgs boson decays into charm quarks with the ATLAS detector</h4>
+                        <p class="authors">ATLAS Collaboration</p>
+                        <p class="venue">Eur. Phys. J. C 82, 717 (2022)</p>
+                        <p class="pub-note">Main analyzer: charm tagging optimization</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1140/epjc/s10052-022-10588-3" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2201.11428" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Graph Neural Networks in Particle Physics: Implementations, Innovations, and Challenges</h4>
+                        <p class="authors">S. Thais, P. Calafiura, G. Chachamis, G. DeZoort, J. Duarte, <span class="me">S. Ganguly</span>, M. Kagan, D. Murnane, M.S. Neubauer, K. Terao</p>
+                        <p class="venue">arXiv:2203.12852 (2022)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2203.12852" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Symmetry Group Equivariant Architectures for Physics</h4>
+                        <p class="authors">A. Bogatskiy, <span class="me">S. Ganguly</span>, T. Kipf, R. Kondor, D.W. Miller, D. Murnane, J.T. Offermann, M. Pettee, P. Shanahan, C. Shimmin, S. Thais</p>
+                        <p class="venue">arXiv:2203.06153 (2022)</p>
+                        <p class="pub-links"><a href="https://arxiv.org/abs/2203.06153" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Secondary vertex finding in jets with neural networks</h4>
+                        <p class="authors">J. Shlomi, <span class="me">S. Ganguly</span>, E. Gross, K. Cranmer, Y. Lipman, H. Serviansky, H. Maron, N. Segol</p>
+                        <p class="venue">Eur. Phys. J. C 81, 540 (2021)</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1140/epjc/s10052-021-09342-y" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2008.02831" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Towards a Computer Vision Particle Flow</h4>
+                        <p class="authors">F.A. Di Bello, <span class="me">S. Ganguly</span>, E. Gross, M. Kado, M. Pitt, L. Santi, J. Shlomi</p>
+                        <p class="venue">Eur. Phys. J. C 81, 107 (2021)</p>
+                        <p class="pub-note">Editor's choice and EPJC cover</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1140/epjc/s10052-021-08897-0" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/2003.08863" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>ATLAS b-jet identification performance and efficiency measurement with t<span class="ov">t</span> events in pp collisions at √s&nbsp;=&nbsp;13&nbsp;TeV</h4>
+                        <p class="authors">ATLAS Collaboration</p>
+                        <p class="venue">Eur. Phys. J. C 79, 970 (2019)</p>
+                        <p class="pub-note">Main analyzer: DL1r training</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1140/epjc/s10052-019-7450-8" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/1907.05120" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                    <article class="publication-item">
+                        <h4>Measurement and QCD analysis of double-differential inclusive jet cross sections in pp collisions at √s&nbsp;=&nbsp;8&nbsp;TeV and cross section ratios to 2.76 and 7&nbsp;TeV</h4>
+                        <p class="authors">CMS Collaboration</p>
+                        <p class="venue">JHEP 03, 156 (2017)</p>
+                        <p class="pub-note">Main analyzer and analysis contact; main results of my Ph.D. thesis</p>
+                        <p class="pub-links"><a href="https://doi.org/10.1007/JHEP03(2017)156" target="_blank" rel="noopener">Journal</a><a href="https://arxiv.org/abs/1609.05331" target="_blank" rel="noopener">arXiv</a></p>
+                    </article>
+                </div>
+            </div>
+            <p class="section-note">
+                Full publication lists are on <a href="https://scholar.google.com/citations?user=FacGNwsAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+                (308,000+ citations, including ATLAS and CMS collaboration papers) and
+                <a href="https://inspirehep.net/authors/1071689?ui-citation-summary=true" target="_blank" rel="noopener">Inspire HEP</a>.
             </p>
+        </section>
+
+        <!-- Talks Section -->
+        <section id="talks">
+            <h2>Talks &amp; Seminars</h2>
+            <ul class="entry-list">
+                <li class="entry">
+                    <span class="entry-year">2026</span>
+                    <div>
+                        <span class="entry-title">The Modern Era of Machine Learning for Heavy-Flavor Tagging: From the LHC to Future Colliders</span>
+                        <p class="entry-meta">Heavy Flavor Meet 2026, IIT Gandhinagar · Invited plenary talk</p>
+                    </div>
+                </li>
+                <li class="entry">
+                    <span class="entry-year">2026</span>
+                    <div>
+                        <a class="entry-title" href="https://indico.global/event/15240/contributions/165341/" target="_blank" rel="noopener">Jet Taggers Rediscover the Energy Correlators: A Causal and Explainable-AI Dissection</a>
+                        <p class="entry-meta">ML4Jets 2026, Marietta Blau Institute (ÖAW), Vienna · Parallel talk</p>
+                    </div>
+                </li>
+                <li class="entry">
+                    <span class="entry-year">2026</span>
+                    <div>
+                        <a class="entry-title" href="https://www.icts.res.in/program/QCDHardProbes" target="_blank" rel="noopener">Jets and Bayesian Learning</a>
+                        <p class="entry-meta">Hard Probes in Non-Equilibrium QCD Matter (Hard Probes'26), ICTS Bengaluru · Invited plenary talk</p>
+                    </div>
+                </li>
+                <li class="entry">
+                    <span class="entry-year">2025</span>
+                    <div>
+                        <a class="entry-title" href="https://scitalks.tifr.res.in/event/9049/overview" target="_blank" rel="noopener">Probing Strong Interaction with Jets</a>
+                        <p class="entry-meta">Physics in Hadronic and Nuclear Collisions (PHANC'25), Puri · Invited plenary talk</p>
+                    </div>
+                </li>
+                <li class="entry">
+                    <span class="entry-year">2024</span>
+                    <div>
+                        <a class="entry-title" href="https://indico.global/event/8298/" target="_blank" rel="noopener">Machine Learning in HEP and Cosmology</a>
+                        <p class="entry-meta">Frontiers of Particle Physics 2024, IISc Bengaluru · Invited discussion session leader</p>
+                    </div>
+                </li>
+                <li class="entry">
+                    <span class="entry-year">2024</span>
+                    <div>
+                        <a class="entry-title" href="https://indico.global/event/8292/" target="_blank" rel="noopener">Machine Learning in HEP</a>
+                        <p class="entry-meta">Future Topics in Collider Physics 2024, IISER Pune · Invited discussion session leader</p>
+                    </div>
+                </li>
+                <li class="entry">
+                    <span class="entry-year">2024</span>
+                    <div>
+                        <a class="entry-title" href="https://www.icts.res.in/program/QEICIII2024" target="_blank" rel="noopener">Machine Learning Knowledge Transfer: From LHC to EIC</a>
+                        <p class="entry-meta">Probing Hadron Structure at the Electron-Ion Collider 2024, ICTS Bengaluru · Contributed talk</p>
+                    </div>
+                </li>
+            </ul>
+            <details class="more">
+                <summary>Earlier talks, 2012–2023 (30)</summary>
+                <ul class="entry-list">
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.saha.ac.in/event/3/" target="_blank" rel="noopener">Application of Deep Learning in High Energy Physics</a>
+                            <p class="entry-meta">International Conference on High Energy Particle and Astrophysics, Saha Institute, Kolkata · Invited plenary talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <span class="entry-title">Application of Deep Learning in High Energy Physics</span>
+                            <p class="entry-meta">Japan Physical Society 2023, Sendai · Invited symposium plenary talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/1232581/contributions/5442563/" target="_blank" rel="noopener">Improving Multi-Higgs Sensitivity in the Hadronic Final State Using Machine Learning</a>
+                            <p class="entry-meta">Tri-Higgs Workshop, Dubrovnik · Invited talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <a class="entry-title" href="https://www.thphys.uni-heidelberg.de/index.php?lang=e&amp;n1=seminars" target="_blank" rel="noopener">ML-Based Particle Flow Algorithm</a>
+                            <p class="entry-meta">Institute of Theoretical Physics Colloquium, Heidelberg · Departmental colloquium</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <a class="entry-title" href="https://www-het.phys.sci.osaka-u.ac.jp/~nhwg/HPNP2023/program.html" target="_blank" rel="noopener">General Overview of Higgs Properties in ATLAS</a>
+                            <p class="entry-meta">Higgs as a Probe of New Physics 2023, Osaka University · ATLAS-selected review talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <a class="entry-title" href="https://agenda.linearcollider.org/event/9964/" target="_blank" rel="noopener">Graph Neural Network Based Flavor Tagging at LHC</a>
+                            <p class="entry-meta">Advanced Jet Flavor Tagging for ILC, KEK · Invited technical talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2023</span>
+                        <div>
+                            <span class="entry-title">Particle Flow with Deep Learning</span>
+                            <p class="entry-meta">ML at HEP Workshop, KEK · Invited technical talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2022</span>
+                        <div>
+                            <a class="entry-title" href="https://www.kmi.nagoya-u.ac.jp/eng/events/2683/" target="_blank" rel="noopener">Graph Neural Networks From a High Energy Physics Perspective</a>
+                            <p class="entry-meta">Machine Learning in Astrophysics Workshop, Kobayashi-Maskawa Institute, Nagoya · Invited technical talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2022</span>
+                        <div>
+                            <span class="entry-title">Symmetry Equivariant Generative Models for Hadronization</span>
+                            <p class="entry-meta">Japan Physical Society Autumn Meeting, Okayama · Parallel session talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2022</span>
+                        <div>
+                            <a class="entry-title" href="https://conferences.weizmann.ac.il/SRitp/Aug2022/" target="_blank" rel="noopener">Super-Resolution for Calorimetry with the Open Data Detector</a>
+                            <p class="entry-meta">Hammers and Nails 2022, Weizmann Institute · Invited participation</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2022</span>
+                        <div>
+                            <span class="entry-title">Machine Learning in High Energy Physics</span>
+                            <p class="entry-meta">TIFR DHEP Annual Meeting · Invited seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2021</span>
+                        <div>
+                            <span class="entry-title">SRM University ML Symposium</span>
+                            <p class="entry-meta">Invited seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2021</span>
+                        <div>
+                            <a class="entry-title" href="https://inspirehep.net/seminars/1896482" target="_blank" rel="noopener">IIT Delhi HEP Seminar</a>
+                            <p class="entry-meta">Invited seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2021</span>
+                        <div>
+                            <span class="entry-title">Snowmass EF-01 Overview</span>
+                            <p class="entry-meta">Snowmass 2021, EF-01 Review · Invited review talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2021</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/980214/contributions/4413596/" target="_blank" rel="noopener">Machine Learning Based Particle Flow Algorithm and Application of Super-Resolution Techniques</a>
+                            <p class="entry-meta">Machine Learning for Jets 2021, Heidelberg</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2021</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.global/event/774/contributions/21210/attachments/9179/13934/BSM_Higgs_PhenoPitt_2021.pdf" target="_blank" rel="noopener">Searches for BSM Higgs Bosons at ATLAS</a>
+                            <p class="entry-meta">Phenomenology 2021 Symposium, Pittsburgh · ATLAS-selected talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2020</span>
+                        <div>
+                            <span class="entry-title">Particle Flow and Machine Learning</span>
+                            <p class="entry-meta">India-CMS Lecture Series · Invited seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2020</span>
+                        <div>
+                            <span class="entry-title">Improving ATLAS Particle Flow Through Deep Learning</span>
+                            <p class="entry-meta">Ben-Gurion University HEP Seminar · Invited seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2020</span>
+                        <div>
+                            <span class="entry-title">Towards Computer Vision Particle-Flow</span>
+                            <p class="entry-meta">Caltech HEP Seminar · Invited seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2020</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/897015/contributions/3816344/attachments/2016151/3370861/IML_2020_April.pdf" target="_blank" rel="noopener">Computer Vision and Particle-Flow Technique</a>
+                            <p class="entry-meta">IML Working Group, CERN · Invited talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2020</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/809820/contributions/3635430/attachments/1971685/3280054/ML4Jets_Final.pdf" target="_blank" rel="noopener">Deep Learning Methods to Improve Particle Flow Reconstruction</a>
+                            <p class="entry-meta">ML4Jets 2020, New York</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2019</span>
+                        <div>
+                            <span class="entry-title">Energy Flow Regression Using Machine Learning</span>
+                            <p class="entry-meta">Hammers and Nails 2019, Weizmann Institute</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2018</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/649482/" target="_blank" rel="noopener">Inputs, Grooming and Track Assisted Techniques for Jet Substructure</a>
+                            <p class="entry-meta">BOOST 2018, Paris · ATLAS-selected talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2018</span>
+                        <div>
+                            <span class="entry-title">Boosted Jets: An Experimental Probe to Standard Model and Beyond</span>
+                            <p class="entry-meta">Joint Particle Physics Meeting, Israel · National HEP seminar</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2017</span>
+                        <div>
+                            <span class="entry-title">Search for Heavy Particles Decaying to Pairs of Top Quarks at √s&nbsp;=&nbsp;13&nbsp;TeV</span>
+                            <p class="entry-meta">Israel Physical Society 2017 · National conference</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2017</span>
+                        <div>
+                            <span class="entry-title">Jet Measurement &amp; Jet Substructure in ATLAS</span>
+                            <p class="entry-meta">Santa Fe Jets and Heavy Flavor Workshop · ATLAS-selected review talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2016</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.in2p3.fr/event/12491/contributions/10047/attachments/8333/10355/BoostedTop_New.pdf" target="_blank" rel="noopener">Boosted Top: An Experimental Overview</a>
+                            <p class="entry-meta">Top-LHC-France 2016 · Invited review talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2014</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/356688/contributions/1765419/attachments/709134/973495/qcdmeetingiit.pdf" target="_blank" rel="noopener">QCD Measurements at CMS</a>
+                            <p class="entry-meta">International Workshop on Frontiers of QCD, IIT Bombay · Invited review talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2013</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/218030/contributions/451189/" target="_blank" rel="noopener">Jet Production Measurements at CMS</a>
+                            <p class="entry-meta">EPS-HEP 2013, Stockholm · CMS-selected talk</p>
+                        </div>
+                    </li>
+                    <li class="entry">
+                        <span class="entry-year">2012</span>
+                        <div>
+                            <a class="entry-title" href="https://indico.cern.ch/event/181298/contributions/309483/" target="_blank" rel="noopener">Jet Measurements at CMS</a>
+                            <p class="entry-meta">ICHEP 2012, Melbourne · CMS-selected talk</p>
+                        </div>
+                    </li>
+                </ul>
+            </details>
+        </section>
+
+        <!-- Teaching Section -->
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <div class="two-column">
+                <div>
+                    <div class="subsection">
+                        <h3 class="category-title">Courses at IIT Kanpur</h3>
+                        <ul class="entry-list">
+                            <li class="entry">
+                                <span class="entry-year">2025, 2026</span>
+                                <div>
+                                    <span class="entry-title">PHY-680: Particle Physics</span>
+                                    <p class="entry-meta">Graduate course · Lectures and tutorials</p>
+                                </div>
+                            </li>
+                            <li class="entry">
+                                <span class="entry-year">2025, 2026</span>
+                                <div>
+                                    <span class="entry-title">PHY-685: Quantum Field Theory I</span>
+                                    <p class="entry-meta">Graduate course · Lectures and tutorials</p>
+                                </div>
+                            </li>
+                            <li class="entry">
+                                <span class="entry-year">2024</span>
+                                <div>
+                                    <span class="entry-title">PHY-690B: Physics at the Large Hadron Collider</span>
+                                    <p class="entry-meta">Graduate course · Lectures and tutorials</p>
+                                </div>
+                            </li>
+                            <li class="entry">
+                                <span class="entry-year">2024</span>
+                                <div>
+                                    <span class="entry-title">PHY-113: Electrodynamics</span>
+                                    <p class="entry-meta">Undergraduate course · Weekly tutorials</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="subsection">
+                        <h3 class="category-title">Earlier Teaching</h3>
+                        <ul class="entry-list">
+                            <li class="entry">
+                                <span class="entry-year">2019–2021</span>
+                                <div>
+                                    <span class="entry-title">Practical Deep Learning for Coders</span>
+                                    <p class="entry-meta">Weizmann Institute · Course material: <a href="https://github.com/WeizmannML/course2019" target="_blank" rel="noopener">2019</a>, <a href="https://github.com/WeizmannML/course2020" target="_blank" rel="noopener">2020</a></p>
+                                </div>
+                            </li>
+                            <li class="entry">
+                                <span class="entry-year">2013</span>
+                                <div>
+                                    <span class="entry-title">QCD in Colliders</span>
+                                    <p class="entry-meta">TIFR · Teaching assistant</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="category-title">Invited Schools &amp; Lectures</h3>
+                    <ul class="entry-list">
+                        <li class="entry">
+                            <span class="entry-year">2026</span>
+                            <div>
+                                <a class="entry-title" href="https://scitalks.tifr.res.in/event/9299/overview" target="_blank" rel="noopener">ML4HEP 2026: Machine Learning for Particle and Astroparticle Physics</a>
+                                <p class="entry-meta">TIFR, Mumbai · Principal lecturer and National Advisory Committee</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2026</span>
+                            <div>
+                                <a class="entry-title" href="https://www.hri.res.in/~sangam/sangam26/newprogramme.html" target="_blank" rel="noopener">SANGAM 2026: Current and Future Prospects of the LHC Program</a>
+                                <p class="entry-meta">HRI, Prayagraj · Principal lecturer</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2025</span>
+                            <div>
+                                <a class="entry-title" href="https://www.iiserkol.ac.in/~ml4hep/" target="_blank" rel="noopener">ML4HEP 2025: Machine Learning for Particle and Astroparticle Physics</a>
+                                <p class="entry-meta">IISER Kolkata · Principal lecturer and National Advisory Committee</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2025</span>
+                            <div>
+                                <span class="entry-title">CMS Data Analysis School</span>
+                                <p class="entry-meta">IIT Hyderabad · ML lead, five lectures and hands-on tutorials</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2025</span>
+                            <div>
+                                <a class="entry-title" href="https://indico.imsc.res.in/event/5/" target="_blank" rel="noopener">IMSc Spring School in High Energy Physics</a>
+                                <p class="entry-meta">Institute of Mathematical Sciences · Five lectures on jets</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2024</span>
+                            <div>
+                                <a class="entry-title" href="https://vietnam.in2p3.fr/" target="_blank" rel="noopener">VSOP-30, 20th Rencontres du Vietnam</a>
+                                <p class="entry-meta">Quy Nhon, Vietnam · Principal lecturer, four lectures</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2024</span>
+                            <div>
+                                <span class="entry-title">ML4HEP 2024: Machine Learning for Particle and Astroparticle Physics</span>
+                                <p class="entry-meta">IOP, Bhubaneswar · Principal lecturer and National Advisory Committee</p>
+                            </div>
+                        </li>
+                        <li class="entry">
+                            <span class="entry-year">2023</span>
+                            <div>
+                                <a class="entry-title" href="https://www.icts.res.in/program/ML4HEP" target="_blank" rel="noopener">Statistical Methods and Machine Learning in High Energy Physics</a>
+                                <p class="entry-meta">ICTS, Bengaluru · Principal lecturer, nine lectures on ML on graphs and sets · <a href="https://github.com/sanmayphy/ICTS_ML_SCHOOL" target="_blank" rel="noopener">Course material</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <!-- Contact Section -->
@@ -955,7 +1787,7 @@
                     </p>
                     <p style="color: var(--text-light); line-height: 1.8; margin-top: 1rem;">
                         The High Energy Physics group at IIT Kanpur regularly invites applications for postdoctoral 
-                        positions. Check our <a href="https://sites.google.com/view/hepiitk" target="_blank" style="color: var(--accent);">group website</a> for current openings.
+                        positions. Check our <a href="https://sites.google.com/view/hepiitk" target="_blank" rel="noopener" style="color: var(--accent-text);">group website</a> for current openings.
                     </p>
                 </div>
             </div>
@@ -963,10 +1795,10 @@
     </main>
 
     <footer>
-        <p>© 2025 Dr. Sanmay Ganguly · Indian Institute of Technology, Kanpur</p>
+        <p>© 2026 Dr. Sanmay Ganguly · Indian Institute of Technology, Kanpur</p>
         <p style="margin-top: 0.5rem;">
             <a href="https://github.com/sanmayphy">GitHub</a> · 
-            <a href="https://inspirehep.net/authors/1071689?ui-citation-summary=true">Inspire HEP</a> .
+            <a href="https://inspirehep.net/authors/1071689?ui-citation-summary=true">Inspire HEP</a> ·
             <a href="https://scholar.google.com/citations?user=FacGNwsAAAAJ">Google Scholar</a> · 
             <a href="https://twitter.com/SanmayGanguly">Twitter</a>
         </p>
